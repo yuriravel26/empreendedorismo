@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - SaúdePlus</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #333;
+            --bg-color: #f0f0f0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .neumorphic {
+            background: var(--bg-color);
+            box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .neumorphic:hover {
+            box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+        }
+
+        .dark-mode {
+            --primary-color: #2980b9;
+            --secondary-color: #27ae60;
+            --text-color: #f0f0f0;
+            --bg-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">SaúdePlus</a>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:text-blue-200">Início</a></li>
+                <li><a href="medicos.html" class="hover:text-blue-200">Médicos</a></li>
+                <li><a href="agendamentos.html" class="hover:text-blue-200">Agendamentos</a></li>
+                <li><a href="prontuarios.html" class="hover:text-blue-200">Prontuários</a></li>
+                <li><a href="contato.html" class="hover:text-blue-200">Contato</a></li>
+            </ul>
+            <button id="darkModeToggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                🌙
+            </button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-10">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Contato</h2>
+            <div class="neumorphic p-6 mb-8">
+                <p>Tem alguma dúvida ou sugestão? Entre em contato conosco preenchendo o formulário abaixo:</p>
+                <form id="contactForm" class="mt-4">
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-bold mb-2">Nome</label>
+                        <input type="text" id="name" required class="w-full p-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-bold mb-2">E-mail</label>
+                        <input type="email" id="email" required class="w-full p-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-sm font-bold mb-2">Mensagem</label>
+                        <textarea id="message" required class="w-full p-2 border rounded" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-blue-600 text-white py-8 mt-16">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 SaúdePlus. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Lógica para o envio do formulário (apenas para fins de demonstração)
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso!');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

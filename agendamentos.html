@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos - SaúdePlus</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #333;
+            --bg-color: #f0f0f0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .neumorphic {
+            background: var(--bg-color);
+            box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .neumorphic:hover {
+            box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+        }
+
+        .dark-mode {
+            --primary-color: #2980b9;
+            --secondary-color: #27ae60;
+            --text-color: #f0f0f0;
+            --bg-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">SaúdePlus</a>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:text-blue-200">Início</a></li>
+                <li><a href="medicos.html" class="hover:text-blue-200">Médicos</a></li>
+                <li><a href="agendamentos.html" class="hover:text-blue-200">Agendamentos</a></li>
+                <li><a href="prontuarios.html" class="hover:text-blue-200">Prontuários</a></li>
+                <li><a href="contato.html" class="hover:text-blue-200">Contato</a></li>
+            </ul>
+            <button id="darkModeToggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                🌙
+            </button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-10">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Agendamentos</h2>
+            <div class="neumorphic p-6 mb-8">
+                <p>Agende sua consulta preenchendo o formulário abaixo:</p>
+                <form id="appointmentForm" class="mt-4">
+                    <div class="mb-4">
+                        <label for="doctor" class="block text-sm font-bold mb-2">Médico</label>
+                        <select id="doctor" required class="w-full p-2 border rounded">
+                            <option value="">Selecione um médico</option>
+                            <option value="Dra. Mariana Silva">Dra. Mariana Silva</option>
+                            <option value="Dr. Carlos Oliveira">Dr. Carlos Oliveira</option>
+                            <option value="Dra. Ana Paula Santos">Dra. Ana Paula Santos</option>
+                            <option value="Dr. Ricardo Ferreira">Dr. Ricardo Ferreira</option>
+                            <option value="Dra. Juliana Costa">Dra. Juliana Costa</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="date" class="block text-sm font-bold mb-2">Data</label>
+                        <input type="date" id="date" required class="w-full p-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="time" class="block text-sm font-bold mb-2">Hora</label>
+                        <input type="time" id="time" required class="w-full p-2 border rounded">
+                    </div>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Agendar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-blue-600 text-white py-8 mt-16">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 SaúdePlus. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Lógica para o envio do formulário (apenas para fins de demonstração)
+        document.getElementById('appointmentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Consulta agendada com sucesso!');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
